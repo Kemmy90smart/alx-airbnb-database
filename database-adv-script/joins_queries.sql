@@ -33,3 +33,19 @@ SELECT
     b.end_date
 FROM users u
 FULL OUTER JOIN bookings b ON u.id = b.user_id;
+/* =========================================================
+   2. LEFT JOIN
+   Retrieve all properties and their reviews,
+   including properties with no reviews
+   ========================================================= */
+
+SELECT
+    properties.id AS property_id,
+    properties.name AS property_name,
+    reviews.id AS review_id,
+    reviews.rating,
+    reviews.comment
+FROM properties
+LEFT JOIN reviews
+    ON properties.id = reviews.property_id
+ORDER BY properties.id;
